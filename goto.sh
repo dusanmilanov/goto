@@ -29,7 +29,6 @@ else if [[ $# == 2 ]]; then
 	if [[ $1 == "--mark" ]]; then 
 		echo "Adding $(pwd) as bookmark $name"
 		echo $name $(pwd) >> $bookmarks
-		cat $bookmarks
 	fi
 fi
 fi
