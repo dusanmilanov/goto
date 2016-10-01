@@ -29,5 +29,13 @@ else if [[ $# == 2 ]]; then
 fi
 fi
 if [[ $valid -eq 0 ]]; then
-	echo "Not enough parameters, use --mark, --delete or --list"
+	echo "Usage:"
+	echo "goto --mark <name>"
+   	echo "  Sets the bookmark"
+	echo "goto <name>"
+	echo "  Jumps to the bookmark" 	
+	echo "goto --delete <name>"
+	echo "  Deletes the bookmark"
+	echo "goto --list"
+	echo "  Lists all the bookmarks"
 fi
