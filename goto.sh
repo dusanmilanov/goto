@@ -21,14 +21,24 @@ if [[ $# == 1 ]]; then
 	fi
 else if [[ $# == 2 ]]; then 
 	name=$2
+	count=`eval grep "^$name " $bookmarks | wc -l`
 	if [[ $1 == "--mark" || $1 == "--delete" ]]; then
-		echo Deleting $name
 		sed -i "/^$name /d" $bookmarks
+		if [[ $1 == "--delete" ]]; then 
+			if [[ $count -eq 0 ]]; then 
+				echo Bookmark not found.
+			else
+				echo Deleted bookmark $name
+			fi 
+		else
+			if [[ $count -eq 0 ]]; then 
+				echo Adding bookmark $name
+			else
+				echo Replacing bookmark $name
+			fi 
+			echo $name $(pwd) >> $bookmarks
+		fi
 		valid=1
-	fi
-	if [[ $1 == "--mark" ]]; then 
-		echo "Adding $(pwd) as bookmark $name"
-		echo $name $(pwd) >> $bookmarks
 	fi
 fi
 fi
