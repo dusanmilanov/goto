@@ -1,6 +1,11 @@
 #!/bin/bash
 bookmarks=$HOME/.bookmarks
 valid=0
+
+if [[ ! -f $bookmarks ]]; then
+	> $bookmarks
+fi
+
 if [[ $# == 1 ]]; then 
 	if [[ $1 == "--list" ]]; then 
 			cat $bookmarks
